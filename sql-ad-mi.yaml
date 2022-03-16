@@ -1,0 +1,62 @@
+apiVersion: v1
+data:
+  password: YXJjYWRtaW5AMTIz #arcadmin@123
+  username: YXJjYWRtaW4=  #arcadmin
+kind: Secret
+metadata:
+  name: arcadmin-login-secret
+  namespace: arc
+type: Opaque
+---
+apiVersion: sql.arcdata.microsoft.com/v2
+kind: SqlManagedInstance
+metadata:
+  name: sql-ad-mi
+  namespace: arc
+spec:
+  backup:
+    retentionPeriodInDays: 7
+  dev: true
+  tier: GeneralPurpose
+  forceHA: "true"
+  licenseType: LicenseIncluded
+  replicas: 1
+  scheduling:
+    default:
+      resources:
+        limits:
+          cpu: "2"
+          memory: 4Gi
+        requests:
+          cpu: "2"
+          memory: 4Gi
+  security:
+    adminLoginSecret: arcadmin-login-secret
+    activeDirectory:
+      connector:
+        name: adarc
+        namespace: arc
+      accountName: arcuser
+      keytabSecret: arcuser-keytab-secret
+  services:
+    primary:
+      type: LoadBalancer
+      dnsName: azdc01.contoso.local
+      port: 31433
+  storage:
+    backups:
+      volumes:
+        - className: managed-premium
+          size: 5Gi
+    data:
+      volumes:
+        - className: managed-premium
+          size: 5Gi
+    datalogs:
+      volumes:
+        - className: managed-premium
+          size: 5Gi
+    logs:
+      volumes:
+        - className: managed-premium
+          size: 5Gi
