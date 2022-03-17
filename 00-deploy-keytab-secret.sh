@@ -1,6 +1,7 @@
-##################################
-# Install krb5-user without prompt
-##################################
+#!/bin/bash
+#Define a set of environment variables to be used in resource creations.
+#
+
 sudo su
 apt-get update # Update for latest package
 DEBIAN_FRONTEND=noninteractive apt-get -yq install krb5-user # Unattended krb5-user install
