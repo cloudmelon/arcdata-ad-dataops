@@ -19,7 +19,6 @@ export SUBID=$subscription
 
 export REGION_NAME=$region
 export RESOURCE_GROUP=$resourcegroup
-export KUBERNETES_VERSION=$version
 export SUBNET_NAME=aks-subnet
 export VNET_NAME=arc-vnet
 export AKS_NAME=arcopsaks 
@@ -49,7 +48,6 @@ SUBNET_ID=$(az network vnet subnet show \
 az aks create \
     --resource-group $RESOURCE_GROUP \
     --name $AKS_NAME \
-    --kubernetes-version $version \
     --load-balancer-sku standard \
     --network-plugin azure \
     --vnet-subnet-id $SUBNET_ID \
