@@ -10,8 +10,12 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- script: echo Hello, world!
+- script: echo Starting automation !
   displayName: 'Run a one-line script'
+
+- task: Bash@3
+  inputs:
+    filePath: '00-deploy-keytab-secret.sh'
 
 - script: |
     echo Add other tasks to build, test, and deploy your project.
