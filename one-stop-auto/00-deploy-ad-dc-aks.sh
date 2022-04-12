@@ -3,7 +3,7 @@
 #
 
 export Location=westeurope
-export ResourceGroupName=melqin-arcadops-rg
+export ResourceGroupName=your-arcadops-rg
 export NetworkSecurityGroup=arc-nsg
 export VNetName=arc-vnet
 export VNetAddress=10.0.0.0/16
