@@ -1,6 +1,6 @@
 # Configure the Domain Controller
 $domainName = 'contoso.local'
-$domainAdminPassword = "testcloud@123"
+$domainAdminPassword = "<your password>"
 $secureDomainAdminPassword = $domainAdminPassword | ConvertTo-SecureString -AsPlainText -Force
 
 #computename

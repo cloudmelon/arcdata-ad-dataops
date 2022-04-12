@@ -1,7 +1,7 @@
 #!/bin/bash
 #Define a set of environment variables to be used in resource creations.
 
-export SUBID="182c901a-129a-4f5d-86e4-cc6b294590a2"
+export SUBID="<your sub id >"
 export REGION_NAME=westeurope
 export RESOURCE_GROUP=mel-arcops-rg
 export AZDATA_LOGSUI_USERNAME=arcuser
