@@ -21,9 +21,9 @@ chmod u+x create-sql-keytab.sh # Change permissions to execute
 # AD_PASSWORD is the password for the SQL MI User we created in AD earlier
 AD_PASSWORD=arcadmin@123 ./create-sql-keytab.sh \
    --realm CONTOSO.LOCAL \
-   --account arcuser \
+   --account arcadmin \
    --port 31433 \
-   --dns-name azdc01.contoso.local \
-   --keytab-file arcuser.keytab \
-   --secret-name arcuser-keytab-secret \
+   --dns-name azdc.contoso.local \
+   --keytab-file arcadmin.keytab \
+   --secret-name arcadmin-keytab-secret \
    --secret-namespace arc

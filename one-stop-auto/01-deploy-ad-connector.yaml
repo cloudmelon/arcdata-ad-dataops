@@ -1,0 +1,29 @@
+apiVersion: v1
+data:
+  password: UHVrb245MDA=
+  username: YXJjYWR1c2Vy 
+kind: Secret
+metadata:
+  name: arcadmin-dsa-secret
+  namespace: arc-auto-ad 
+type: Opaque
+---
+apiVersion: arcdata.microsoft.com/v1beta2
+kind: ActiveDirectoryConnector
+metadata:
+  name: adarc
+  namespace: arc-auto-ad 
+spec:
+  activeDirectory:
+    serviceAccountProvisioning: automatic
+    ouDistinguishedName: "OU=arcou,DC=contoso,DC=local"
+    domainServiceAccountSecret: arcadmin-dsa-secret
+    realm: CONTOSO.LOCAL 
+    netbiosDomainName: CONTOSO 
+    domainControllers:
+      primaryDomainController:
+        hostname: azdc.contoso.local 
+  dns: 
+    preferK8sDnsForPtrLookups: false 
+    nameserverIPAddresses: 
+      - 10.0.10.10 
